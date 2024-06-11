@@ -114,7 +114,7 @@ const twoDices = (dado1, dado2) =>
             {console.log (`You rolled a ${sumaDados}. You win!`)}
         else if (dado1===dado2 || entreTres===0 && sumaDados!==3)
             {console.log (`You rolled a ${dado1} and a ${dado2}. Extra roll`)}
-        else {console.log (`You rolled a ${sumaDados}. Roll again!`)}
+        else {console.log (`You rolled a ${sumaDados}. You lost!`)}
     }
 
    twoDices(randomNumber,randomNumber2)
