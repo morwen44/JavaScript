@@ -3,7 +3,7 @@ const addition = (a,b) => {
     return additionResult
 }
 
-let firstResult= addition (5,2)
+let firstResult= addition (3,8)
 
 console.log("Suma = ", firstResult);
 
@@ -12,7 +12,7 @@ const subtraction = (a,b) => {
     return subtractionResult
 }
 
-let secondResult= subtraction (5,2)
+let secondResult= subtraction (6,1)
 
 console.log("Resta = ", secondResult);
 
@@ -21,7 +21,7 @@ const multiplication = (a,b) => {
     return multiplicationResult
 }
 
-let thirdResult= multiplication (5,2)
+let thirdResult= multiplication (7,4)
 
 console.log("Multiplicación = ", thirdResult);
 
@@ -30,7 +30,7 @@ const division = (a,b) => {
     return divisionResult
 }
 
-let fourthResult= division (5,2)
+let fourthResult= division (10,5)
 
 console.log("División = ", fourthResult);
 
@@ -39,11 +39,11 @@ const evenOrNot = (a) =>
     let remainder = a%2;
     if (remainder === 0)
         {return `El número ${a} es par` }
-    if (remainder !==0)
+    else
         {return `El número ${a} es impar` }
     
 }
 
-let fifthResult = evenOrNot(5);
+let fifthResult = evenOrNot(7);
 
 console.log(fifthResult);
