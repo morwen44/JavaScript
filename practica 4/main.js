@@ -11,8 +11,8 @@ for (let i = 0; i < phrase.length; i++) {
 }
 phrase = phrase.toLowerCase();
 
-let vowelRegex = /[aeiouáéíóúü]/;
-let consonantRegex = /[bcdfghjklmnñpqrstvwxyz]/;
+let vowelRegex = /[aeiouáéíóúü]/g;
+let consonantRegex = /[bcdfghjklmnñpqrstvwxyz]/g;
 
 let vowelCount = 0;
 let consonantCount = 0;
@@ -31,3 +31,14 @@ for (let i = 0; i < phrase.length; i++) {
 
 console.log("Number of vowels: " + vowelCount);
 console.log("Number of consonants: " + consonantCount);
+
+let vowels = phrase.match(vowelRegex);
+let consonants = phrase.match(consonantRegex);
+
+let vowelCount2 = vowels.length;
+let consonantCount2 = consonants.length;
+
+console.log(vowels);
+console.log(consonants);
+console.log("Number of vowels: " + vowelCount2);
+console.log("Number of consonants: " + consonantCount2);
