@@ -18,7 +18,7 @@ let vowelCount = 0;
 let consonantCount = 0;
 
 for (let i = 0; i < phrase.length; i++) {
-  let char = phrase.charAt(i);
+  let char = phrase[i];
 
   if (vowelRegex.test(char)) {
     vowelCount++;
