@@ -1,44 +1,54 @@
 let phrase =
   "En un lugar oscuro nos encontramos, y un poco más de conocimiento ilumina nuestro camino.";
 
-let phraseLength = phrase.length;
+const countChars = (text) => {
+  let phraseLength = phrase.length;
+  return phraseLength;
+};
 
-console.log(`Cantidad de caracteres = ${phraseLength}`);
+let charTotal = countChars(phrase);
+console.log(`Characters = ${charTotal}`);
 
-for (let i = 0; i < phrase.length; i++) {
-  let phraseCharacter = phrase[i];
-  console.log(phraseCharacter);
-}
-phrase = phrase.toLowerCase();
+const PhraseChar = (phraseToChar) => {
+  for (let i = 0; i < phraseToChar.length; i++) {
+    let phraseCharacter = phrase[i];
+    console.log(phraseCharacter);
+  }
+};
+
+PhraseChar(phrase);
 
 let vowelRegex = /[aeiouáéíóúü]/g;
 let consonantRegex = /[bcdfghjklmnñpqrstvwxyz]/g;
 
-let vowelCount = 0;
-let consonantCount = 0;
-
-for (let i = 0; i < phrase.length; i++) {
-  let char = phrase[i];
-
-  if (vowelRegex.test(char)) {
-    vowelCount++;
+const countVowels = (phraseToCount) => {
+  let vowelCount = 0;
+  let phraseLower = phraseToCount.toLowerCase();
+  for (let i = 0; i < phraseLower.length; i++) {
+    let char = phraseLower[i];
+    if (vowelRegex.test(char)) {
+      vowelCount++;
+    }
   }
+  let vowelResult = `Vowels = ${vowelCount}`;
+  return vowelResult;
+};
 
-  if (consonantRegex.test(char)) {
-    consonantCount++;
+const countConsonants = (phraseToCount) => {
+  let consonantCount = 0;
+  let phraseLower = phraseToCount.toLowerCase();
+  for (let i = 0; i < phraseLower.length; i++) {
+    let char = phraseLower[i];
+    if (consonantRegex.test(char)) {
+      consonantCount++;
+    }
   }
-}
+  let consonantResult = `Consonants = ${consonantCount}`;
+  return consonantResult;
+};
 
-console.log("Number of vowels: " + vowelCount);
-console.log("Number of consonants: " + consonantCount);
-
-let vowels = phrase.match(vowelRegex);
-let consonants = phrase.match(consonantRegex);
-
-let vowelCount2 = vowels.length;
-let consonantCount2 = consonants.length;
+let vowels = countVowels(phrase);
+let consonants = countConsonants(phrase);
 
 console.log(vowels);
 console.log(consonants);
-console.log("Number of vowels: " + vowelCount2);
-console.log("Number of consonants: " + consonantCount2);
