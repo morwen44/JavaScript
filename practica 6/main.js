@@ -1,4 +1,13 @@
 let numbers = [12, 45, 7, 33, 22, 14, 49, 27, 5, 38];
+let sumTotal = numbers.reduce((sum, number) => sum + number, 0);
+
+console.log(sumTotal);
+
+let evenNumbers = numbers.filter((number) => number % 2 === 0);
+console.log("Números pares:", evenNumbers);
+
+let oddNumbers = numbers.filter((number) => number % 2 !== 0);
+console.log("Números nones:", oddNumbers);
 
 let people = [
   ["Juan", "Gómez", "Martínez"],
@@ -7,6 +16,12 @@ let people = [
   ["María", "Fernández", "Sánchez"],
   ["Luis", "Hernández", "Torres"],
 ];
+
+let firstNames = people.map((nombreCompleto) => nombreCompleto[0]);
+console.log(firstNames);
+
+let wholeNames = people.map((nombreCompleto) => nombreCompleto.join(" "));
+console.log(wholeNames);
 
 let users = [
   {
@@ -81,21 +96,60 @@ let users = [
   },
 ];
 
-/*
-  con el array numbers:
-    1.- Obtener la suma total de todos los números que estan dentro del array
-    2.- Necesitamos obtener una nueva lista con únicamente los números que sean pares
-    3.- Necesitamos obtener una nueva lista con únicamente los números que sean nones
-  
-  con el array people:
-    1.- Necesitamos una nueva lista con únicamente los nombres de las personas 
-    2.- Necesitamos una nueva lista que tenga los nombres completos de las personas
+let usersNames = users.map((usuario) => usuario.name + " " + usuario.lastname);
 
-  con el array users:
-    1.- Necesito una nueva lista, que contenga únicamente los nombres completos de los usuarios
-    2.- Necesito saber la edad promedio de los usuarios
-    3.- Necesito poder obtener una nueva lista de los usuarios con base en su país
-    4.- Necesito obtener una nueva lista con base en un hobbie ( includes )
-    5.- Necesito una lista que contenga los diferentes hobbies de nuestros usuarios sin repetir
-*/
+console.log(usersNames);
 
+const averageAge = (listaUsuarios) => {
+  let usersAges = listaUsuarios.map((usuario) => usuario.age);
+  let age = usersAges.reduce((sum, number) => sum + number, 0);
+  let average = age / users.length;
+  return average;
+};
+
+let promedioEdad = averageAge(users);
+console.log(promedioEdad);
+
+const countryFilter = (listaUsuarios, pais) => {
+  let namesByCountry = listaUsuarios.filter(
+    (usuario) => usuario.country.toLowerCase() === pais.toLowerCase()
+  );
+  let listResult = namesByCountry.map((usuario) => usuario.name);
+  return listResult;
+};
+
+let country = "Chile";
+let countryList = countryFilter(users, country);
+console.log(countryList);
+
+const hobbiesFilter = (listaUsuarios, hobby) => {
+  let namesByHobby = listaUsuarios.filter((usuario) =>
+    usuario.hobbies.includes(hobby)
+  );
+  let listResult = namesByHobby.map((usuario) => usuario.name);
+  return listResult;
+};
+
+let hobby = "viajar";
+let listByHobby = hobbiesFilter(users, hobby);
+console.log(listByHobby);
+
+let allHobbies = users.map((user) => user.hobbies).flat();
+
+let uniqueHobbies = [...new Set(allHobbies)];
+
+console.log("Hobbies únicos:", uniqueHobbies);
+
+const listUsersByHobby = (listaUsuarios) => {
+  let allHobbies = listaUsuarios.map((user) => user.hobbies).flat();
+  let uniqueHobbies = [...new Set(allHobbies)];
+  let hobbyObject = {};
+  uniqueHobbies.forEach((hobby) => {
+    hobbyObject[hobby] = listaUsuarios.filter((user) =>
+      user.hobbies.includes(hobby)
+    );
+  });
+  return hobbyObject;
+};
+
+console.log(listUsersByHobby(users));
