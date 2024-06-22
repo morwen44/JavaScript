@@ -80,7 +80,7 @@ const getNameAge = (usersArray) => {
     user.append(userText);
     usersList.append(user);
   });
-  document.getElementById("userListContainer").appendChild(usersList);
+  document.getElementById("userListContainer").append(usersList);
 };
 
 getNameAge(users);
@@ -97,7 +97,7 @@ const getCountries = (usersArray) => {
     country.append(countryText);
     countriesList.append(country);
   });
-  document.getElementById("countriesList").appendChild(countriesList);
+  document.getElementById("countriesList").append(countriesList);
 };
 
 getCountries(users);
