@@ -40,17 +40,19 @@ const handleSubmit = (event) => {
   createCard();
   userForm.reset();
   clearSocialInputs();
-
 };
 
 const clearCardsContainer = () => {
-  cardsContainer.innerHTML = "";
+  while (cardsContainer.firstChild) {
+    cardsContainer.removeChild(cardsContainer.firstChild);
+  }
 };
 
 const clearSocialInputs = () => {
-    socialsContainer.innerHTML = "";
-  };
-  
+  while (socialsContainer.firstChild) {
+    socialsContainer.removeChild(socialsContainer.firstChild);
+  }
+};
 
 userForm.addEventListener("submit", handleSubmit);
 
@@ -61,14 +63,23 @@ addSocialBtn.addEventListener("click", () => {
 
     let socialSelect = document.createElement("select");
     socialSelect.classList.add("form-control", "social-select", "mb-3");
-    socialSelect.innerHTML = `
-        <option value="">Select Social Media</option>
-        <option value="GitHub">GitHub</option>
-        <option value="Frontend Mentor">Frontend Mentor</option>
-        <option value="LinkedIn">LinkedIn</option>
-        <option value="Twitter">Twitter</option>
-        <option value="Instagram">Instagram</option>
-      `;
+
+    const options = [
+      { value: "", text: "Select Social Media" },
+      { value: "GitHub", text: "GitHub" },
+      { value: "Frontend Mentor", text: "Frontend Mentor" },
+      { value: "LinkedIn", text: "LinkedIn" },
+      { value: "Twitter", text: "Twitter" },
+      { value: "Instagram", text: "Instagram" },
+    ];
+
+    options.forEach((optionData) => {
+      let option = document.createElement("option");
+      option.value = optionData.value;
+      option.textContent = optionData.text;
+      socialSelect.append(option);
+    });
+
     socialInputGroup.append(socialSelect);
 
     let handleInput = document.createElement("input");
@@ -159,5 +170,4 @@ const createCard = () => {
 
     cardsContainer.append(newCard);
   });
-  
 };
