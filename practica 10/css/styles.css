@@ -9,14 +9,4 @@ body {
   height: 100vh;
   justify-content: center;
   align-items: center;
-} /*# sourceMappingURL=styles.css.map */
-
-.card-container {
-  max-height: 80vh;
-  overflow-y: auto;
-}
-
-.post-img {
-  max-height: 20vh;
-  object-fit: cover;
-}
+}/*# sourceMappingURL=styles.css.map */
